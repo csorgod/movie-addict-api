@@ -1,0 +1,51 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    hostname: mysql
+    restart: always
+    healthcheck:
+      test: out=$$(mysqladmin ping -h localhost -P 3306 -uroot --password=$${MYSQL_ROOT_PASSWORD} 2>&1); echo $$out | grep 'mysqld is alive' || { echo $$out; exit 1; }
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+    environment:
+      - TZ=America/Sao_Paulo
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=movieaddictdb
+      - MYSQL_USER=movieaddictrestapiuserdb
+      - MYSQL_PASSWORD=movieaddicrestapiuserpassword
+      - MYSQL_ALLOW_EMPTY_PASSWORD=no
+    ports:
+      - 33306:3306
+  rpgo-api:
+    image: rpgo-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpgo-api
+    hostname: rpgo-api
+    restart: always
+    ports:
+      - 8086:8086
+    depends_on:
+      - "db"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DBNAME=movieaddictdb
+      - MYSQL_USER=movieaddictrestapiuserdb
+      - MYSQL_PASSWORD=movieaddicrestapiuserpassword
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - DB_TRACK_MODIFICATIONS=false
+    volumes:
+      - app-data:/app
+    networks:
+      - backend
+volumes:
+  db-data:
+  app-data:
+networks:
+  backend:

@@ -1,0 +1,9 @@
+uvicorn==0.17.6
+fastapi==0.76.0
+SQLAlchemy==1.4.36
+pylint==2.13.9
+alembic==1.7.7
+PyMySQL==1.0.2
+pytest==7.1.2
+bcrypt==4.0.0
+pyJWT==1.7.1
