@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Startup
-        run: echo "Starting up lint job"
+        run: echo "Starting up linter job"
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies
@@ -23,3 +23,5 @@ jobs:
       - name: Analysing the code with pylint
         run: | 
           pylint ../movie-addict-api --rcfile .pylintrc --errors-only --verbose
+      - name: Shutdown
+        run: echo "Linter job finished"
