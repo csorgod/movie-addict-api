@@ -1,0 +1,25 @@
+name: Workflow
+on:
+  push:
+    branches: 
+      - dev
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Startup
+        run: echo "Starting up lint job"
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Installing dependencies
+        run: | 
+          pip -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Analysing the code with pylint
+        run: | 
+          pylint ../movie-addict-api --rcfile .pylintrc --errors-only --verbose
