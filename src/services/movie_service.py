@@ -5,15 +5,15 @@ from src.schemas.movie import Movie as MovieSchema
 
 class MovieService():
 
-    def get_all(db: Session, skip: int = 0, limit: int = 100):
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100):
         return db.query(MovieModel).offset(skip).limit(limit).all()
 
-    def get_by_id(db: Session, cat_id: int):
-        return db.query(MovieModel).filter(MovieModel.cat_id == cat_id).first()
+    def get_by_id(self, db: Session, movie_id: int):
+        return db.query(MovieModel).filter(MovieModel.movie_id == movie_id).first()
 
-    def create_new(db: Session, adventurer: MovieSchema):
-        _adventurer = MovieModel(adventurer.name, adventurer.breed, adventurer.profession)
-        db.add(_adventurer)
+    def create_new(self, db: Session, movie: MovieSchema):
+        _movie = MovieModel(name = movie.name, release_date = movie.release_date)
+        db.add(_movie)
         db.commit()
-        db.refresh(_adventurer)
-        return _adventurer
+        db.refresh(_movie)
+        return _movie

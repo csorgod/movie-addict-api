@@ -12,7 +12,7 @@ router = APIRouter(
 
 @router.post("", response_model = TokenResponse, status_code = status.HTTP_200_OK)
 async def get_all(auth: ApiUser, db: Session = Depends(database.get_db)):
-    auth = AuthService.auth(auth, db)
+    auth = AuthService().auth(auth, db)
 
     if auth:
         return auth
