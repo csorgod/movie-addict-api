@@ -40,3 +40,24 @@ jobs:
 
       - name: Shutdown
         run: echo "Linter job finished"
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pending
+        run: echo "pending https://coverage.readthedocs.io/en/7.2.3/"
+  
+  type-check:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Pending
+          run: echo "pending https://microsoft.github.io/pyright/#/installation"
+      # - name: Setup node.js (for pyright)
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: "12"
+
+      # - name: Run type checking
+      #   run: |
+      #     npm install -g pyright
+      #     pipenv run typecheck
