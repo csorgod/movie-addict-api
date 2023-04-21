@@ -20,7 +20,7 @@ jobs:
         run: | 
           python -m pip install --upgrade pip
           pip install pipenv
-          pipenv lock
+          pipenv shell
           pipenv lock
           pipenv install
       - name: Analysing the code with pylint
