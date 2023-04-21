@@ -20,9 +20,9 @@ jobs:
         run: | 
           python -m pip install --upgrade pip
           pip install pipenv
-          pipenv shell
           pipenv lock
           pipenv install
+          pip freeze
       - name: Analysing the code with pylint
         run: | 
           pylint ../movie-addict-api --rcfile .pylintrc --errors-only --verbose
