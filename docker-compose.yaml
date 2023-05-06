@@ -20,13 +20,13 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=no
     ports:
       - 33306:3306
-  rpgo-api:
-    image: rpgo-api
+  movieaddict-api:
+    image: movieaddict-api
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: rpgo-api
-    hostname: rpgo-api
+    container_name: movieaddict-api
+    hostname: movieaddict-api
     restart: always
     ports:
       - 8086:8086
