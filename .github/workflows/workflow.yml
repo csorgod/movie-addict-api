@@ -114,7 +114,7 @@ jobs:
         run: echo "pending https://coverage.readthedocs.io/en/7.2.3/"
   
   type-check:
-    needs: [tests, lint, coverage]
+      needs: [tests, lint, coverage]
       runs-on: ubuntu-latest
       steps:
         - name: Pending
