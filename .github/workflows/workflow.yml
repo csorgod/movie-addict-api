@@ -86,6 +86,9 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install --deploy --dev
 
+      - name: Listing files in the folder
+        run: ls
+
       - name: Run tests
         run: |
           pipenv run pytest -v
