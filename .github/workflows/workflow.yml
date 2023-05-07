@@ -29,7 +29,6 @@ jobs:
     steps:
       - name: Getting MySql status
         run: |
-          systemctl status mysql.service
           journalctl -xeu mysql.service
 
       - name: Starting MySql
