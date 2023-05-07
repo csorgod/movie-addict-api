@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Start MySql
         run: |
-          sudo /etc/init.d/mysql start
+          sudo systemctl start mysql
 
       - name: Get Code
         uses: actions/checkout@v3
