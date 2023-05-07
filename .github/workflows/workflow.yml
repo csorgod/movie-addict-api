@@ -64,6 +64,10 @@ jobs:
           - 3306:3306
 
     steps:
+      - name: Start MySql
+        run: |
+          sudo /etc/init.d/mysql start
+
       - name: Get Code
         uses: actions/checkout@v3
 
@@ -88,9 +92,6 @@ jobs:
 
       - name: Creating logs folder
         run: mkdir logs
-
-      - name: Listing files in the folder
-        run: ls
 
       - name: Run tests
         run: |
