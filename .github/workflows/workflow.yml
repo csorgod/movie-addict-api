@@ -27,13 +27,9 @@ jobs:
           - 3306:3306
 
     steps:
-      - name: Getting MySql status
-        run: |
-          journalctl -xeu mysql.service
-
       - name: Starting MySql
         run: |
-          sudo systemctl start mysql
+          sudo systemctl start mysql.service
 
       - name: Get Code
         uses: actions/checkout@v3
