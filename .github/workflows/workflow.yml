@@ -86,6 +86,9 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install --deploy --dev
 
+      - name: Creating logs folder
+        run: mkdir logs
+
       - name: Listing files in the folder
         run: ls
 
@@ -100,7 +103,6 @@ jobs:
           MYSQL_SERVICE_HOST: mysql
           MYSQL_SERVICE_PORT: 3306
           DB_TRACK_MODIFICATIONS: false
-
 
   coverage:
     runs-on: ubuntu-latest
