@@ -13,8 +13,8 @@ pymysql = "*"
 pytest = "*"
 bcrypt = "*"
 pyjwt = "*"
-coverage = "*"
 httpx = "*"
+coverage = "*"
 
 [dev-packages]
 
