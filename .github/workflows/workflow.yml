@@ -41,7 +41,7 @@ jobs:
       - name: Run coverage and expose rating
         id: coverage
         run: |
-          coverage run -m pytest -v && coverage report --format total echo 'coverage-rating={}' >> $GITHUB_OUTPUT ';' 
+          pipenv run coverage run -m pytest -v && coverage report --format total echo 'coverage-rating={}' >> $GITHUB_OUTPUT ';' 
 
       - name: Output filename
         run: echo "${{ steps.coverage.outputs.coverage-rating }}" 
