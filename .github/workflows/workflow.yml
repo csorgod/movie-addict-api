@@ -12,11 +12,11 @@ jobs:
       db_service:
         image: mysql:5.7
         env:
-          TZ: ${{ secrets.TZ }}
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-          MYSQL_DATABASE:  ${{ secrets.MYSQL_DATABASE }}
-          MYSQL_USER: ${{ secrets.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          TZ: America/Sao_Paulo
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE:  movieaddictdb
+          MYSQL_USER: movieaddictrestapiuserdb
+          MYSQL_PASSWORD: movieaddicrestapiuserpassword
           MYSQL_ALLOW_EMPTY_PASSWORD: no
         options: >-
           --health-cmd "mysqladmin ping" 
@@ -53,10 +53,10 @@ jobs:
         run: |
           pipenv run pytest -v
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-          MYSQL_DBNAME: ${{ secrets.MYSQL_DATABASE }}
-          MYSQL_USER: ${{ secrets.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DBNAME: movieaddictdb
+          MYSQL_USER: movieaddictrestapiuserdb
+          MYSQL_PASSWORD: movieaddicrestapiuserpassword
           MYSQL_SERVICE_HOST: mysql
           MYSQL_SERVICE_PORT: 3306
           DB_TRACK_MODIFICATIONS: false
